@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@700&family=Sigmar&display=swap');	 
+* {
+	font-family:'Poppins',sans-serif;
+}
+/*Styling the background with color*/ 
+body {
+	background:#0e494a;
+	color:#ededed;
+	background: linear-gradient(to left, #26cbce 0%, #123456 100%);
+	
+}   
+div
+{
+    border-radius: 10px;
+    }
+/*Styling the header  */ 
+#header
+{
+    position: fixed;
+    z-index: 1;
+    height:40px;
+    width: 98%;
+    background-color: #668284;
+    margin-bottom: 10px
+    }
+/*Styling the word:NUR FAIEZA */ 
+#name {
+    float:left;
+  margin-left: 20px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+}
+/*Styling the word:nfnoraffandi@gmail.com*/ 
+#email{
+    float:right;
+    margin-right: 20px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+}
+
+#contact
+{
+  margin-left:45%;
+  padding-bottom: 10px;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+    }
+	/*Bold the word*/ 
+a:hover {
+    font-weight: bold;
+}
+	/*Styling the background of resume*/ 
+.right
+{
+    float: left;
+    margin-top: 50px;
+    padding-left:10px;
+    height: auto;
+    width: 99%;
+    background-color: #344F54;
+    }
+ /*Styling the footer postion and the color*/    
+#footer
+{
+    height:40px;
+    clear:both;
+    position: relative;
+    background-color: #668284;
+    }
+   	/*Styling the header */  
+h3
+{
+    text-decoration: underline;
+    }
+	/*Styling the table with black border dashed line*/ 
+table
+{
+    border: 1px dashed black;
+    }
+/*Styling the table with orange border line*/ 
+td
+{
+    padding: 2px;
+    border: 1px solid #E88741;
+    }
+	/*Bold the word*/ 
+#heading
+{
+    font-weight:bold;
+    }

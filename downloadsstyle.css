@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@700&family=Sigmar&display=swap');
+* {
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+	font-family:'Poppins',sans-serif;
+}
+/*Styling the webpage body with color*/
+body {
+	background:#0e494a;
+	color:#ededed;
+	background: linear-gradient(to left, #26cbce 0%, #123456 100%);
+	margin:0;
+	text-align:center;
+}   
+/*Styling the header*/
+h1{
+	text-align:center;
+	padding:20px 0;
+	background-color:#545454;
+}
