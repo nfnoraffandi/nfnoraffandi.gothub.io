@@ -1,3 +1,35 @@
+<?php
+	session_start();
+	include("connect.php");
+    $conn;
+	mysqli_select_db($conn, "cafe");
+
+    if (isset($_POST['reservation'])){
+		
+		$reserve_date= date('Y-m-d', strtotime($_POST['reserve_date']));
+		$reserve_time=$_POST['reserve_time'];
+        $reserve_person=$_POST['reserve_person'];
+        $reserve_user=$_POST['reserve_user'];
+        $reserve_email=$_POST['reserve_email'];
+        $reserve_hp=$_POST['reserve_hp'];
+   
+		$sql = "INSERT INTO reservation(reserve_date, reserve_time, reserve_person, reserve_user, reserve_email, reserve_hp) VALUES('$reserve_date', '$reserve_time', '$reserve_person', '$reserve_user', '$reserve_email', '$reserve_hp')";
+
+		$query_run = mysqli_query($conn, $sql);
+
+		if($query_run){
+			echo "<script> alert('Successfully Booked! Thank You');
+            window.location= 'info.php'</script>";
+		}
+		else {
+			echo "SQL ERROR";
+		}
+    }
+
+	else{
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en"><!-- Basic -->
 <head>
@@ -21,6 +53,10 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">    
 	<!-- Site CSS -->
     <link rel="stylesheet" href="css/style.css">    
+	<!-- Pickadate CSS -->
+    <link rel="stylesheet" href="css/classic.css">    
+	<link rel="stylesheet" href="css/classic.date.css">    
+	<link rel="stylesheet" href="css/classic.time.css">    
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="css/responsive.css">
     <!-- Custom CSS -->
@@ -34,6 +70,21 @@
 </head>
 
 <body>
+<?php
+    $USERNAME = $_SESSION ["USERNAME"];
+    $query = "select * from customer where USERNAME = '$USERNAME'";
+    $result = mysqli_query($conn, $query);
+    $rows = mysqli_num_rows($result);
+
+        if ($rows == 1)
+        {
+            while($rows = mysqli_fetch_assoc($result))
+            {
+                $NAMA = $rows ["NAMA"];
+                $_SESSION["NAMA"]=$NAMA;
+            }
+    	}
+?>
 	<!-- Start header -->
 	<header class="top-navbar">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -46,20 +97,23 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item"><a class="nav-link" href="indexHome.html">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="indexHome.php">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
 						<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
 						<li class="nav-item active dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Pages</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
 								<a class="dropdown-item" href="reservation.html">Reservation</a>
-								<a class="dropdown-item" href="stuff.html">Stuff</a>
+								<a class="dropdown-item" href="staff.html">Staff</a>
 								<a class="dropdown-item" href="gallery.html">Gallery</a>
 							</div>
 						</li>
 						
 						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
 						<!--li class="nav-item"><a class="nav-link" href="contact.html"><img src="new images/cart1.png" alt="" width="45" height="30" /></a></li-->
+						<li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+						<li class="nav-item"><a class="nav-link" href="">Register</a></li>
+						<li class="nav-item">Welcome, <?php echo $NAMA?> </li>
 					</ul>
 				</div>
 			</div>
@@ -72,61 +126,101 @@
 		<div class="container text-center">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1>Gallery</h1>
+					<h1>Reservation</h1>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- End All Pages -->
 	
-	<!-- Start Gallery -->
-	<div class="gallery-box">
-		<div class="container-fluid">
+	<!-- Start Reservation -->
+    <form name="reservation" method="POST" action="reservation.php">
+	<div class="reservation-box">
+		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="heading-title text-center">
-						<h2>Gallery</h2>
-						<p>To live a full life, you have to fill your stomach first.</p>
+						<h2>Reservation</h2>
+						<p>Reservations for May 19th – August 31st are now open.</p>
+						<p>Reservations can be made online, by emailing or by calling 020 7183 2117. Telephone lines are open from 10:00am until 6:00pm, Monday to Friday. Outside of these times, please leave a message and we will respond as soon as we can.</p>
+
+						<p>As our availability can change on a daily basis, if you are unable to find a suitable time online please do call or email us.
+						 </p>
 					</div>
 				</div>
 			</div>
-			<div class="tz-gallery">
-				<div class="row">
-					<div class="col-sm-12 col-md-4 col-lg-4">
-						<a class="lightbox" href="new images/gallery/nbg10.png">
-							<img class="img-fluid" src="new images/gallery/nbg10.png" alt="Gallery Images">
-						</a>
-					</div>
-					<div class="col-sm-6 col-md-4 col-lg-4">
-						<a class="lightbox" href="new images/gallery/nbg11.png">
-							<img class="img-fluid" src="new images/gallery/nbg11.png" alt="Gallery Images">
-						</a>
-					</div>
-					<div class="col-sm-6 col-md-4 col-lg-4">
-						<a class="lightbox" href="new images/gallery/nbg12.png">
-							<img class="img-fluid" src="new images/gallery/nbg12.png" alt="Gallery Images">
-						</a>
-					</div>
-					<div class="col-sm-12 col-md-4 col-lg-4">
-						<a class="lightbox" href="new images/gallery/nbg13.png">
-							<img class="img-fluid" src="new images/gallery/nbg13.png" alt="Gallery Images">
-						</a>
-					</div>
-					<div class="col-sm-6 col-md-4 col-lg-4">
-						<a class="lightbox" href="new images/gallery/nbg14.png">
-							<img class="img-fluid" src="new images/gallery/nbg14.png" alt="Gallery Images">
-						</a>
-					</div> 
-					<div class="col-sm-6 col-md-4 col-lg-4">
-						<a class="lightbox" href="new images/gallery/nbg15.png">
-							<img class="img-fluid" src="new images/gallery/nbg15.png" alt="Gallery Images">
-						</a>
+			<div class="row">
+				<div class="col-lg-12 col-sm-12 col-xs-12">
+					<div class="contact-block">
+						<form id="contactForm">
+							<div class="row">
+								<div class="col-md-6">
+									<h3>Book a table</h3>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input id="input_date" class="form-control" name="reserve_date" type="date" value="" required placeholder="Please enter Date">
+											<div class="help-block with-errors"></div>
+										</div>                                 
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input id="input_time" class="form-control" name="reserve_time" type="time" required placeholder="Please enter time">
+											<div class="help-block with-errors"></div>
+										</div>                                 
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<select class="custom-select d-block form-control" id="person" name="reserve_person" required>
+											  <option disabled selected>Select Person</option>
+											  <option value="1" name="reserve_person">1</option>
+											  <option value="2" name="reserve_person">2</option>
+											  <option value="3" name="reserve_person">3</option>
+											  <option value="4" name="reserve_person">4</option>
+											  <option value="5" name="reserve_person">5</option>
+											  <option value="6" name="reserve_person">6</option>
+											  <option value="7" name="reserve_person">7</option>
+											</select>
+											<div class="help-block with-errors"></div>
+										</div> 
+									</div>
+								</div>
+								<div class="col-md-6">
+									<h3>Contact Details</h3>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input type="text" class="form-control" id="name" name="reserve_user" required placeholder="Please enter your username">
+											<div class="help-block with-errors"></div>
+										</div>                                 
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input type="text" placeholder="Your Email" id="email" class="form-control" name="reserve_email" required data-error="Please enter your email">
+											<div class="help-block with-errors"></div>
+										</div> 
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input type="text" placeholder="Your Numbar" id="phone" class="form-control" name="reserve_hp" required data-error="Please enter your Phone Number">
+											<div class="help-block with-errors"></div>
+										</div> 
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="submit-button text-center">
+										<button class="btn btn-common" id="submit" type="submit" name="reservation">Book Table</button>
+										<div id="msgSubmit" class="h3 text-center hidden"></div> 
+										<div class="clearfix"></div> 
+									</div>
+								</div>
+							</div>            
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- End Gallery -->
+    </form>
+	<!-- End Reservation -->
 	
 	<!-- Start Customer Reviews -->
 	<div class="customer-reviews-box">
@@ -149,7 +243,7 @@
 								</div>
 								<h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Intan Aqilah</strong></h5>
 								<h6 class="text-dark m-0">Web Developer</h6>
-								<p class="m-0 pt-3">It’s a great experience. The ambiance is very welcoming and charming. Amazing drinks, food and service. Staff are extremely knowledgeable and make great recommendations.</p>
+								<p class="m-0 pt-3">It’s a great experience. The ambiance is very welcoming and charming. Amazing wines, food and service. Staff are extremely knowledgeable and make great recommendations.</p>
 							</div>
 							<div class="carousel-item text-center">
 								<div class="img-box p-1 border rounded-circle m-auto">
@@ -285,6 +379,10 @@
 	<script src="js/images-loded.min.js"></script>
 	<script src="js/isotope.min.js"></script>
 	<script src="js/baguetteBox.min.js"></script>
+	<script src="js/picker.js"></script>
+	<script src="js/picker.date.js"></script>
+	<script src="js/picker.time.js"></script>
+	<script src="js/legacy.js"></script>
 	<script src="js/form-validator.min.js"></script>
     <script src="js/contact-form-script.js"></script>
     <script src="js/custom.js"></script>

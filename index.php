@@ -1,3 +1,10 @@
+<?php
+	session_start();
+	include("connect.php");
+	$conn;
+	mysqli_select_db($conn, "cafe");
+?>
+
 <!DOCTYPE html>
 <html lang="en"><!-- Basic -->
 <head>
@@ -46,20 +53,22 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item"><a class="nav-link" href="indexHome.html">Home</a></li>
+						<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
 						<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-						<li class="nav-item active dropdown">
+						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Pages</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="reservation.html">Reservation</a>
-								<a class="dropdown-item" href="stuff.html">Stuff</a>
+								<a class="dropdown-item" href="reservation.php">Reservation</a>
+								<a class="dropdown-item" href="staff.html">Staff</a>
 								<a class="dropdown-item" href="gallery.html">Gallery</a>
 							</div>
 						</li>
 						
 						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-						<!--li class="nav-item"><a class="nav-link" href="contact.html"><img src="new images/cart1.png" alt="" width="45" height="30" /></a></li-->
+						<!--li class="nav-item"><a class="nav-link" href="contact.html"><img src="img/cart1.png" alt="" width="45" height="30" /></a></li-->
+						<li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+						<li class="nav-item"><a class="nav-link" href="register.php">Register</a></li>
 					</ul>
 				</div>
 			</div>
@@ -67,17 +76,221 @@
 	</header>
 	<!-- End header -->
 	
-	<!-- Start All Pages -->
-	<div class="all-page-title page-breadcrumb">
-		<div class="container text-center">
+	<!-- Start slides -->
+	<div id="slides" class="cover-slides">
+		<ul class="slides-container">
+			<li class="text-center">
+				<img src="new images/slide1.png" alt="">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="m-b-20"><strong>Welcome To <br> Group 2 Cafe</strong></h1>
+							<p class="m-b-40">See how your users experience your website in realtime or view  <br> 
+							trends to see any changes in performance over time.</p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="reservation.php">Reservation</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="text-center">
+				<img src="new images/slide2.png" alt="">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="m-b-20"><strong>Welcome To <br> Group 2 Cafe</strong></h1>
+							<p class="m-b-40">See how your users experience your website in realtime or view  <br> 
+							trends to see any changes in performance over time.</p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="reservation.html">Reservation</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="text-center">
+				<img src="new images/slide3.png" alt="">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="m-b-20"><strong>Welcome To <br> Group 2 Cafe</strong></h1>
+							<p class="m-b-40">See how your users experience your website in realtime or view  <br> 
+							trends to see any changes in performance over time.</p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="reservation.html">Reservation</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<div class="slides-navigation">
+			<a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+			<a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+		</div>
+	</div>
+	<!-- End slides -->
+	
+	<!-- Start About -->
+	<div class="about-section-box">
+		<div class="container">
 			<div class="row">
-				<div class="col-lg-12">
-					<h1>Gallery</h1>
+				<div class="col-lg-6 col-md-6 col-sm-12">
+					<img src="new images/abt1.png" alt="" class="img-fluid">
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 text-center">
+					<div class="inner-column">
+						<h1>Welcome To <span>Group 2 Cafe</span></h1>
+						<h4>Little Story</h4>
+						<p>Since our modest beginnings in 2005 with a little space in Melaka’s stylish Jasin locale, Group 2 Cafe's development has been enlivened with the energy to cook and serve solid, Malaysian-Indonesian food. In contrast to other Asian eateries, Group 2 Cafe was made with the explicit expectation to appear as something else. We realize numerous individuals love Indian sustenance, yet a large number of them loathe or are unconscious of the regularly unfortunate fixings that make run of the mill Malaysian-Indonesian nourishment taste so great. Our menu highlights things that utilization the sound and fragrant flavors, however forgets the stuffing spices, spread, oil, and overwhelming cream.</p>
+						<p>Our group takes pride in the way that we can furnish our new and faithful clients with extraordinary tasting Malaysian-Indonesian nourishment that is not normal for that at some other Indian eatery you visit. We perceive that a few people are as yet searching for the run of the mill Indian nourishment, and that is fine with us. </p>
+						<p>Our team consist of very profesional and friendly person. Feel happy to taste our cafe food and beverages.</p>
+						<a class="btn btn-lg btn-circle btn-outline-new-white" href="reservation.html">Reservation</a>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- End All Pages -->
+	<!-- End About -->
+	
+	<!-- Start QT -->
+	<div class="qt-box qt-background">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 ml-auto mr-auto text-left">
+					<p class="lead ">
+						" If you're not the one cooking, stay out of the way and compliment the chef. "
+					</p>
+					<span class="lead">Michael Strahan</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End QT -->
+	
+	<!-- Start Menu -->
+	<div class="menu-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="heading-title text-center">
+						<h2>Special Menu</h2>
+						<p>All the menus are freshly make with the best ingredients and cook by the experience chefs</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="special-menu text-center">
+						<div class="button-group filter-button-group">
+							<button class="active" data-filter="*">All</button>
+							<button data-filter=".drinks">Drinks</button>
+							<button data-filter=".lunch">Lunch</button>
+							<button data-filter=".dinner">Dinner</button>
+						</div>
+					</div>
+				</div>
+			</div>
+				
+			<div class="row special-list">
+				<div class="col-lg-4 col-md-6 special-grid drinks">
+					<div class="gallery-single fix">
+						<img src="new images/nbg1.png" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Teh Tarik Madu</h4>
+							<p>Calorie Amount = 164 calories</p>
+							<h5> RM5.50</h5>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid drinks">
+					<div class="gallery-single fix">
+						<img src="new images/nbg2.png" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Cendol Parfait</h4>
+							<p>Calorie Amount = 390 calories</p>
+							<h5> RM7.50</h5>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid drinks">
+					<div class="gallery-single fix">
+						<img src="new images/nbg3.png" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Es Doger</h4>
+							<p>Calorie Amount = 190 calories</p>
+							<h5> RM8.50</h5>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid lunch">
+					<div class="gallery-single fix">
+						<img src="new images/nbg7.png" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Nasi Padang</h4>
+							<p>Calorie Amount = 670 calories</p>
+							<h5> RM15.50</h5>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid lunch">
+					<div class="gallery-single fix">
+						<img src="new images/nbg4.png" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Nasi Lemak Ayam</h4>
+							<p>Calorie Amount = 500 calories</p>
+							<h5> RM13.50</h5>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid lunch">
+					<div class="gallery-single fix">
+						<img src="new images/nbg8.png" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Satay Special</h4>
+							<p>Calorie Amount = 338 calories</p>
+							<h5> RM10.50</h5>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid dinner">
+					<div class="gallery-single fix">
+						<img src="new images/nbg9.png" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Pecal Lele Keli</h4>
+							<p>Calorie Amount = 380 calories</p>
+							<h5> RM10.00</h5>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid dinner">
+					<div class="gallery-single fix">
+						<img src="new images/nbg5.png" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Laksa Special</h4>
+							<p>Calorie Amount = 432 calories</p>
+							<h5> RM14.50</h5>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid dinner">
+					<div class="gallery-single fix">
+						<img src="new images/nbg6.png" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Mee Hoon Sup Bakso</h4>
+							<p>Calorie Amount = 518 caloies</p>
+							<h5> RM12.50</h5>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<!-- End Menu -->
 	
 	<!-- Start Gallery -->
 	<div class="gallery-box">

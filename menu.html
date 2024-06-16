@@ -1,3 +1,8 @@
+<?php
+	session_start();
+	include("connect.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en"><!-- Basic -->
 <head>
@@ -46,20 +51,22 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item"><a class="nav-link" href="indexHome.html">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+						<li class="nav-item"><a class="nav-link" href="indexHome.php">Home</a></li>
+						<li class="nav-item active"><a class="nav-link" href="menu.html">Menu</a></li>
 						<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-						<li class="nav-item active dropdown">
+						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Pages</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
 								<a class="dropdown-item" href="reservation.html">Reservation</a>
-								<a class="dropdown-item" href="stuff.html">Stuff</a>
+								<a class="dropdown-item" href="staff.html">Staff</a>
 								<a class="dropdown-item" href="gallery.html">Gallery</a>
 							</div>
 						</li>
 						
 						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
 						<!--li class="nav-item"><a class="nav-link" href="contact.html"><img src="new images/cart1.png" alt="" width="45" height="30" /></a></li-->
+						<li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+						<li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
 					</ul>
 				</div>
 			</div>
@@ -72,61 +79,155 @@
 		<div class="container text-center">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1>Gallery</h1>
+					<h1>Special Menu</h1>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- End All Pages -->
 	
-	<!-- Start Gallery -->
-	<div class="gallery-box">
-		<div class="container-fluid">
+	<!-- Start Menu -->
+	<div class="menu-box">
+		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="heading-title text-center">
-						<h2>Gallery</h2>
-						<p>To live a full life, you have to fill your stomach first.</p>
+						<h2>Special Menu</h2>
+						<p>All the menus are freshly make with the best ingredients and cook by the experience chefs.</p>
 					</div>
 				</div>
 			</div>
-			<div class="tz-gallery">
-				<div class="row">
-					<div class="col-sm-12 col-md-4 col-lg-4">
-						<a class="lightbox" href="new images/gallery/nbg10.png">
-							<img class="img-fluid" src="new images/gallery/nbg10.png" alt="Gallery Images">
-						</a>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="special-menu text-center">
+						<div class="button-group filter-button-group">
+							<button class="active" data-filter="*">All</button>
+							<button data-filter=".drinks">Drinks</button>
+							<button data-filter=".lunch">Lunch</button>
+							<button data-filter=".dinner">Dinner</button>
+						</div>
 					</div>
-					<div class="col-sm-6 col-md-4 col-lg-4">
-						<a class="lightbox" href="new images/gallery/nbg11.png">
-							<img class="img-fluid" src="new images/gallery/nbg11.png" alt="Gallery Images">
-						</a>
+				</div>
+			</div>
+				
+			<div class="row special-list">
+				<div class="col-lg-4 col-md-6 special-grid drinks">
+					<div class="gallery-single fix">
+						<img src="new images/nbg1.png" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Teh Tarik Madu</h4>
+							<p>Calorie Amount = 164 calories</p>
+							<h5> RM5.50</h5>
+						</div>
 					</div>
-					<div class="col-sm-6 col-md-4 col-lg-4">
-						<a class="lightbox" href="new images/gallery/nbg12.png">
-							<img class="img-fluid" src="new images/gallery/nbg12.png" alt="Gallery Images">
-						</a>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid drinks">
+					<div class="gallery-single fix">
+						<img src="new images/nbg2.png" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Cendol Parfait</h4>
+							<p>Calorie Amount = 390 calories</p>
+							<h5> RM7.50</h5>
+						</div>
 					</div>
-					<div class="col-sm-12 col-md-4 col-lg-4">
-						<a class="lightbox" href="new images/gallery/nbg13.png">
-							<img class="img-fluid" src="new images/gallery/nbg13.png" alt="Gallery Images">
-						</a>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid drinks">
+					<div class="gallery-single fix">
+						<img src="new images/nbg3.png" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Es Doger</h4>
+							<p>Calorie Amount = 190 calories</p>
+							<h5> RM8.50</h5>
+						</div>
 					</div>
-					<div class="col-sm-6 col-md-4 col-lg-4">
-						<a class="lightbox" href="new images/gallery/nbg14.png">
-							<img class="img-fluid" src="new images/gallery/nbg14.png" alt="Gallery Images">
-						</a>
-					</div> 
-					<div class="col-sm-6 col-md-4 col-lg-4">
-						<a class="lightbox" href="new images/gallery/nbg15.png">
-							<img class="img-fluid" src="new images/gallery/nbg15.png" alt="Gallery Images">
-						</a>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid lunch">
+					<div class="gallery-single fix">
+						<img src="new images/nbg7.png" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Nasi Padang</h4>
+							<p>Calorie Amount = 670 calories</p>
+							<h5> RM15.50</h5>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid lunch">
+					<div class="gallery-single fix">
+						<img src="new images/nbg4.png" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Nasi Lemak Ayam</h4>
+							<p>Calorie Amount = 500 calories</p>
+							<h5> RM13.50</h5>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid lunch">
+					<div class="gallery-single fix">
+						<img src="new images/nbg8.png" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Satay Special</h4>
+							<p>Calorie Amount = 338 calories</p>
+							<h5> RM10.50</h5>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid dinner">
+					<div class="gallery-single fix">
+						<img src="new images/nbg9.png" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Pecal Lele Keli</h4>
+							<p>Calorie Amount = 380 calories</p>
+							<h5> RM10.00</h5>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid dinner">
+					<div class="gallery-single fix">
+						<img src="new images/nbg5.png" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Laksa Special</h4>
+							<p>Calorie Amount = 432 calories</p>
+							<h5> RM14.50</h5>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid dinner">
+					<div class="gallery-single fix">
+						<img src="new images/nbg6.png" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Mee Hoon Sup Bakso</h4>
+							<p>Calorie Amount = 518 caloies</p>
+							<h5> RM12.50</h5>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- End Gallery -->
+	<!-- End Menu -->
+	
+	<!-- Start QT -->
+	<div class="qt-box qt-background">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 ml-auto mr-auto text-left">
+					<p class="lead ">
+						" If you're not the one cooking, stay out of the way and compliment the chef. "
+					</p>
+					<span class="lead">Michael Strahan</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End QT -->
 	
 	<!-- Start Customer Reviews -->
 	<div class="customer-reviews-box">
@@ -145,7 +246,7 @@
 						<div class="carousel-inner mt-4">
 							<div class="carousel-item text-center active">
 								<div class="img-box p-1 border rounded-circle m-auto">
-									<img class="d-block w-100 rounded-circle" src="new images/profile3.jpg" alt="">
+									<img class="d-block w-100 rounded-circle" src="new images/profile3.jpg" alt="" >
 								</div>
 								<h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Intan Aqilah</strong></h5>
 								<h6 class="text-dark m-0">Web Developer</h6>
